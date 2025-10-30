@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pritam Tarafdar - Full Stack Developer Portfolio</title>
+    <title>T Pritam - Full Stack Developer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -13,15 +13,17 @@
         }
 
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #3b82f6;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f9fafb;
+            --primary-color: #3b82f6;
+            --secondary-color: #2563eb;
+            --accent-color: #60a5fa;
+            --text-dark: #e5e7eb;
+            --text-light: #9ca3af;
+            --bg-dark: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
             --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
         }
 
         body {
@@ -29,6 +31,7 @@
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
+            background-color: var(--bg-dark);
         }
 
         /* Smooth Scrolling */
@@ -42,10 +45,11 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         nav {
@@ -92,6 +96,10 @@
             height: 2px;
             background: var(--primary-color);
             transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
 
         .nav-links a:hover::after {
@@ -296,14 +304,17 @@
 
         /* About Section */
         #about {
-            background: var(--bg-light);
+            background: var(--bg-secondary);
         }
 
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 3rem;
-            align-items: center;
+        }
+
+        .about-text {
+            width: 100%;
         }
 
         .about-text p {
@@ -315,24 +326,35 @@
 
         .about-info {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
             margin-top: 2rem;
+            width: 100%;
         }
 
         .info-item {
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            word-break: break-word;
+            flex-wrap: wrap;
         }
 
         .info-item i {
             color: var(--primary-color);
+            flex-shrink: 0;
         }
 
         .info-item strong {
             color: var(--text-dark);
-            min-width: 100px;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+
+        .info-item span {
+            flex: 1;
+            min-width: 0;
+            word-wrap: break-word;
         }
 
         /* Skills Section */
@@ -343,16 +365,18 @@
         }
 
         .skill-category {
-            background: var(--white);
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         .skill-category:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            border-color: var(--primary-color);
         }
 
         .skill-category h3 {
@@ -371,24 +395,24 @@
         }
 
         .skill-tag {
-            background: var(--bg-light);
+            background: var(--bg-dark);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             color: var(--text-dark);
-            border: 2px solid transparent;
+            border: 2px solid rgba(59, 130, 246, 0.2);
             transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
             border-color: var(--primary-color);
-            background: var(--white);
+            background: rgba(59, 130, 246, 0.1);
             transform: scale(1.05);
         }
 
         /* Experience Section */
         #experience {
-            background: var(--bg-light);
+            background: var(--bg-secondary);
         }
 
         .timeline {
@@ -427,16 +451,18 @@
         }
 
         .timeline-content {
-            background: var(--white);
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 10px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         .timeline-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            border-color: var(--primary-color);
         }
 
         .timeline-item::after {
@@ -448,9 +474,9 @@
             width: 15px;
             height: 15px;
             background: var(--primary-color);
-            border: 3px solid var(--white);
+            border: 3px solid var(--bg-dark);
             border-radius: 50%;
-            box-shadow: 0 0 0 4px var(--bg-light);
+            box-shadow: 0 0 0 4px var(--bg-secondary);
         }
 
         .timeline-date {
@@ -497,17 +523,19 @@
         }
 
         .project-card {
-            background: var(--white);
+            background: var(--bg-card);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            border-color: var(--primary-color);
         }
 
         .project-image {
@@ -543,11 +571,12 @@
         }
 
         .tech-tag {
-            background: var(--bg-light);
+            background: var(--bg-dark);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.85rem;
             color: var(--primary-color);
+            border: 1px solid rgba(59, 130, 246, 0.3);
         }
 
         .project-links {
@@ -572,7 +601,7 @@
 
         /* Education Section */
         #education {
-            background: var(--bg-light);
+            background: var(--bg-secondary);
         }
 
         .education-grid {
@@ -582,17 +611,19 @@
         }
 
         .education-card {
-            background: var(--white);
+            background: var(--bg-card);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             border-left: 5px solid var(--primary-color);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-left: 5px solid var(--primary-color);
         }
 
         .education-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
         }
 
         .education-card h3 {
@@ -613,21 +644,32 @@
 
         /* Contact Section */
         .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 3rem;
         }
 
         .contact-info {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            width: 100%;
         }
 
         .contact-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
         }
 
         .contact-item i {
@@ -659,6 +701,7 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            width: 100%;
         }
 
         .form-group {
@@ -675,17 +718,20 @@
         .form-group input,
         .form-group textarea {
             padding: 0.8rem;
-            border: 2px solid var(--bg-light);
+            border: 2px solid rgba(59, 130, 246, 0.2);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            background: var(--bg-card);
+            color: var(--text-dark);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
+            background: var(--bg-secondary);
         }
 
         .form-group textarea {
@@ -712,10 +758,11 @@
 
         /* Footer */
         footer {
-            background: var(--text-dark);
+            background: var(--bg-secondary);
             color: var(--white);
             text-align: center;
             padding: 2rem;
+            border-top: 1px solid rgba(59, 130, 246, 0.1);
         }
 
         footer p {
@@ -724,16 +771,24 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
             .nav-links {
                 position: fixed;
                 left: -100%;
                 top: 70px;
                 flex-direction: column;
-                background-color: var(--white);
+                background-color: var(--bg-secondary);
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
                 padding: 2rem 0;
             }
 
@@ -746,16 +801,41 @@
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
 
             .about-content,
             .contact-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .contact-info {
                 grid-template-columns: 1fr;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+                padding: 0.5rem;
+            }
+
+            .info-item strong {
+                min-width: auto;
             }
 
             .timeline::before {
@@ -778,13 +858,30 @@
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .skills-grid,
             .projects-grid,
             .education-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .skill-category,
+            .project-card,
+            .education-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -856,18 +953,17 @@
             <div class="hero-image">
                 <i class="fas fa-user"></i>
             </div>
-            <h1>Pritam Tarafdar</h1>
-            <p class="subtitle">Full Stack Developer | Software Engineer</p>
-            <p>Passionate about creating elegant solutions to complex problems. Specializing in modern web technologies and building scalable applications.</p>
+            <h1>T Pritam</h1>
+            <p class="subtitle">Full Stack Developer | React & Node.js Specialist</p>
+            <p>Full Stack Developer with 1.5 years of experience, passionate about crafting efficient, maintainable, and user-friendly applications using modern technologies in agile, collaborative teams.</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get In Touch</a>
                 <a href="#projects" class="btn btn-secondary">View My Work</a>
             </div>
             <div class="social-links">
-                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com/yourhandle" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="mailto:your.email@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/T-pritam" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/t-pritam" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:pritamrao38@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </section>
@@ -878,45 +974,45 @@
         <div class="about-content">
             <div class="about-text">
                 <p>
-                    Hello! I'm Pritam, a passionate Full Stack Developer with a strong foundation in both frontend and backend technologies. I love building applications that are not only functional but also provide an excellent user experience.
+                    Hello! I'm T Pritam, a Full Stack Developer with 1.5 years of professional experience in building modern web and mobile applications. I specialize in React.js, React Native, Next.js, Node.js, and the complete MERN stack ecosystem.
                 </p>
                 <p>
-                    With expertise in modern web development frameworks and tools, I strive to create efficient, scalable, and maintainable code. I'm constantly learning and adapting to new technologies to stay at the forefront of web development.
+                    Currently working at Tach21, a 10-minute grocery delivery startup, where I lead the development of customer, vendor, rider, and admin applications. I've successfully reduced API latency by 40% and architected scalable backend solutions using Fastify that handle high-traffic scenarios seamlessly.
                 </p>
                 <p>
-                    When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge with the developer community.
+                    I'm passionate about crafting efficient, maintainable, and user-friendly applications. My expertise spans across frontend development with React and React Native, backend development with Node.js and Express, database management with MongoDB and MySQL, and implementing modern authentication patterns with JWT and OAuth.
                 </p>
             </div>
             <div class="about-info">
                 <div class="info-item">
                     <i class="fas fa-user"></i>
                     <strong>Name:</strong>
-                    <span>Pritam Tarafdar</span>
+                    <span>T Pritam</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
                     <strong>Email:</strong>
-                    <span>your.email@example.com</span>
+                    <span>pritamrao38@gmail.com</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-phone"></i>
                     <strong>Phone:</strong>
-                    <span>+91 XXXXX XXXXX</span>
+                    <span>+91 9861006347</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <strong>Location:</strong>
-                    <span>India</span>
+                    <span>Hyderabad, India</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-graduation-cap"></i>
-                    <strong>Degree:</strong>
-                    <span>Bachelor's/Master's</span>
+                    <strong>Education:</strong>
+                    <span>BTech - NIST University</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-briefcase"></i>
                     <strong>Experience:</strong>
-                    <span>X+ Years</span>
+                    <span>1.5 Years</span>
                 </div>
             </div>
         </div>
@@ -929,48 +1025,45 @@
             <div class="skill-category">
                 <h3><i class="fas fa-code"></i> Frontend Development</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">React.js</span>
-                    <span class="skill-tag">Vue.js</span>
+                    <span class="skill-tag">React Native</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">JavaScript</span>
                     <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Redux</span>
+                    <span class="skill-tag">Context API</span>
                     <span class="skill-tag">Tailwind CSS</span>
-                    <span class="skill-tag">Bootstrap</span>
                 </div>
             </div>
             <div class="skill-category">
                 <h3><i class="fas fa-server"></i> Backend Development</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Fastify</span>
                     <span class="skill-tag">Express.js</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Django</span>
-                    <span class="skill-tag">Flask</span>
-                    <span class="skill-tag">REST API</span>
-                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">WebSockets</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag">Pusher</span>
                 </div>
             </div>
             <div class="skill-category">
-                <h3><i class="fas fa-database"></i> Database</h3>
+                <h3><i class="fas fa-database"></i> Database & Storage</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Mongoose</span>
                     <span class="skill-tag">MySQL</span>
-                    <span class="skill-tag">Redis</span>
-                    <span class="skill-tag">Firebase</span>
+                    <span class="skill-tag">Cloudinary</span>
                 </div>
             </div>
             <div class="skill-category">
-                <h3><i class="fas fa-tools"></i> Tools & Others</h3>
+                <h3><i class="fas fa-shield-alt"></i> Authentication & Tools</h3>
                 <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">AWS</span>
-                    <span class="skill-tag">Linux</span>
-                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">JWT</span>
+                    <span class="skill-tag">OAuth</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">Redux Toolkit</span>
+                    <span class="skill-tag">Vercel</span>
                     <span class="skill-tag">Agile</span>
-                    <span class="skill-tag">Jest</span>
                 </div>
             </div>
         </div>
@@ -982,40 +1075,41 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <span class="timeline-date">2023 - Present</span>
-                    <h3>Senior Full Stack Developer</h3>
-                    <h4>Company Name</h4>
-                    <p>Leading development of enterprise web applications and mentoring junior developers.</p>
-                    <ul>
-                        <li>Architected and developed scalable web applications using React and Node.js</li>
-                        <li>Improved application performance by 40% through optimization</li>
-                        <li>Led a team of 5 developers in agile environment</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <span class="timeline-date">2021 - 2023</span>
+                    <span class="timeline-date">Dec 2024 - Present</span>
                     <h3>Full Stack Developer</h3>
-                    <h4>Company Name</h4>
-                    <p>Developed and maintained multiple client projects using modern web technologies.</p>
+                    <h4><a href="https://play.google.com/store/apps/details?id=com.tach.com" target="_blank" style="color: var(--primary-color);">Tach21</a> - 10-minute grocery delivery startup</h4>
+                    <p>Leading development of customer, vendor, rider, and admin applications in a hybrid work environment.</p>
                     <ul>
-                        <li>Built responsive web applications using React and Vue.js</li>
-                        <li>Developed RESTful APIs using Node.js and Express</li>
-                        <li>Collaborated with cross-functional teams to deliver projects on time</li>
+                        <li>Led development and maintenance of customer, vendor, rider, and admin applications using React Native and web technologies, ensuring seamless order management and real-time updates</li>
+                        <li>Architected and optimized Fastify backend, designing scalable APIs and services for high traffic and complex workflows</li>
+                        <li>Implemented advanced fetch orders API, reducing latency by 40% and improving response for complex data queries</li>
+                        <li>Enhanced app performance and UI consistency, improving user engagement, retention, and overall satisfaction</li>
                     </ul>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <span class="timeline-date">2019 - 2021</span>
-                    <h3>Junior Developer</h3>
-                    <h4>Company Name</h4>
-                    <p>Started career as a junior developer, learning and contributing to various projects.</p>
+                    <span class="timeline-date">Oct 2024 - Dec 2024</span>
+                    <h3>Software Engineer Trainee</h3>
+                    <h4><a href="https://neyaatek.com/" target="_blank" style="color: var(--primary-color);">NeyaaTek</a></h4>
+                    <p>Developed key features for Rafflerra platform in a remote work setting.</p>
                     <ul>
-                        <li>Assisted in developing frontend components and features</li>
-                        <li>Fixed bugs and improved code quality</li>
-                        <li>Participated in code reviews and team meetings</li>
+                        <li>Developed key features for Rafflerra platform to automate raffles and customer management, improving event engagement</li>
+                        <li>Improved user experience by implementing timed draws and transparency features for customers</li>
+                        <li>Delivered scalable and maintainable code, contributing to platform stability and overall performance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <span class="timeline-date">Oct 2023 - May 2024</span>
+                    <h3>SDE Intern</h3>
+                    <h4>Caravel.Tech</h4>
+                    <p>Built responsive UI components for EdTech platform in a remote environment.</p>
+                    <ul>
+                        <li>Built responsive UI components for EdTech platform using React and Redux, enhancing usability across devices</li>
+                        <li>Integrated 40+ RESTful APIs for authentication, course management, and payments, ensuring smooth operations</li>
+                        <li>Optimized system performance and reliability, improving overall student experience</li>
                     </ul>
                 </div>
             </div>
@@ -1031,55 +1125,44 @@
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <div class="project-content">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A full-featured e-commerce platform with payment integration, user authentication, and admin dashboard.</p>
+                    <h3>ShoppersCart</h3>
+                    <p>MERN-based e-commerce platform with authentication, product management, and responsive design. Features secure login, password reset, product search, wishlist, cart, and order history.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Tailwind CSS</span>
                         <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
                         <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Stripe</span>
+                        <span class="tech-tag">JWT</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://github.com/T-pritam" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://shoperskart.vercel.app/" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-image">
-                    <i class="fas fa-tasks"></i>
+                    <i class="fas fa-comments"></i>
                 </div>
                 <div class="project-content">
-                    <h3>Project Management Tool</h3>
-                    <p>A collaborative project management tool with real-time updates, task tracking, and team collaboration features.</p>
+                    <h3>ChatPulse</h3>
+                    <p>Full-stack real-time chat application supporting one-to-one and group messaging. Includes friend management, typing indicators, file uploads, and unread message tracking.</p>
                     <div class="project-tech">
-                        <span class="tech-tag">Vue.js</span>
-                        <span class="tech-tag">Express</span>
-                        <span class="tech-tag">PostgreSQL</span>
-                        <span class="tech-tag">Socket.io</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image">
-                    <i class="fas fa-chart-line"></i>
-                </div>
-                <div class="project-content">
-                    <h3>Analytics Dashboard</h3>
-                    <p>Real-time analytics dashboard with data visualization, reporting features, and user insights.</p>
-                    <div class="project-tech">
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">TypeScript</span>
                         <span class="tech-tag">React</span>
-                        <span class="tech-tag">D3.js</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Redux Toolkit</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Pusher</span>
+                        <span class="tech-tag">Cloudinary</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://github.com/T-pritam/ChatPulse" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://github.com/T-pritam/ChatPulse" target="_blank"><i class="fas fa-external-link-alt"></i> View Project</a>
                     </div>
                 </div>
             </div>
@@ -1091,16 +1174,22 @@
         <h2 class="section-title">Education</h2>
         <div class="education-grid">
             <div class="education-card">
-                <h3>University Name</h3>
-                <p class="degree">Bachelor's/Master's in Computer Science</p>
-                <p class="year">2015 - 2019</p>
-                <p>Relevant coursework: Data Structures, Algorithms, Database Management, Web Development</p>
+                <h3>NIST University</h3>
+                <p class="degree">Bachelor of Technology (BTech)</p>
+                <p class="year">2019 - 2023</p>
+                <p>CGPA: 8.2/10 | Comprehensive study in Computer Science fundamentals including Data Structures, Algorithms, Database Management, Web Technologies, and Software Engineering</p>
             </div>
             <div class="education-card">
-                <h3>Certifications</h3>
-                <p class="degree">Full Stack Web Development</p>
-                <p class="year">2020</p>
-                <p>Completed comprehensive certification in modern web development technologies and best practices.</p>
+                <h3>Saraswati Vidya Mandir</h3>
+                <p class="degree">Higher Secondary Education</p>
+                <p class="year">2018 - 2019</p>
+                <p>Percentage: 63% | Focused on Science stream with Mathematics, Physics, Chemistry, and Computer Science</p>
+            </div>
+            <div class="education-card">
+                <h3>Saraswati Vidya Mandir</h3>
+                <p class="degree">Secondary Education</p>
+                <p class="year">2016 - 2017</p>
+                <p>Percentage: 89% | Strong foundation in core subjects including Mathematics, Science, and English</p>
             </div>
         </div>
     </section>
@@ -1114,28 +1203,35 @@
                     <i class="fas fa-envelope"></i>
                     <div>
                         <h3>Email</h3>
-                        <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                        <p><a href="mailto:pritamrao38@gmail.com">pritamrao38@gmail.com</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
                         <h3>Phone</h3>
-                        <p><a href="tel:+91XXXXXXXXXX">+91 XXXXX XXXXX</a></p>
+                        <p><a href="tel:+919861006347">+91 9861006347</a></p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
                         <h3>Location</h3>
-                        <p>City, State, India</p>
+                        <p>Hyderabad, India</p>
                     </div>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-linkedin"></i>
                     <div>
                         <h3>LinkedIn</h3>
-                        <p><a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+                        <p><a href="https://www.linkedin.com/in/t-pritam" target="_blank">linkedin.com/in/t-pritam</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <h3>GitHub</h3>
+                        <p><a href="https://github.com/T-pritam" target="_blank">github.com/T-pritam</a></p>
                     </div>
                 </div>
             </div>
@@ -1163,7 +1259,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Pritam Tarafdar. All rights reserved.</p>
+        <p>&copy; 2025 T Pritam. All rights reserved.</p>
         <p>Built with ❤️ and passion for web development</p>
     </footer>
 
