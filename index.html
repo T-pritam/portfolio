@@ -13,17 +13,21 @@
         }
 
         :root {
-            --primary-color: #3b82f6;
-            --secondary-color: #2563eb;
-            --accent-color: #60a5fa;
-            --text-dark: #e5e7eb;
-            --text-light: #9ca3af;
+            --primary-color: #8b5cf6;
+            --secondary-color: #7c3aed;
+            --accent-color: #a78bfa;
+            --text-dark: #f1f5f9;
+            --text-light: #cbd5e1;
+            --text-muted: #94a3b8;
             --bg-dark: #0f172a;
             --bg-secondary: #1e293b;
             --bg-card: #1e293b;
+            --bg-elevated: #334155;
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            --shadow-colored: 0 10px 40px rgba(139, 92, 246, 0.2);
+            --gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         }
 
         body {
@@ -45,11 +49,11 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
         }
 
         nav {
@@ -126,7 +130,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--gradient);
+            background: var(--gradient-hero);
             color: var(--white);
             text-align: center;
             padding: 8rem 2rem 2rem;
@@ -185,14 +189,15 @@
             height: 180px;
             border-radius: 50%;
             margin: 0 auto 2rem;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 4rem;
             animation: fadeInUp 1s ease 0.2s both;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .hero h1 {
@@ -249,11 +254,30 @@
         .btn-secondary {
             border: 2px solid var(--white);
             color: var(--white);
+            background: transparent;
         }
 
         .btn-secondary:hover {
             background: var(--white);
             color: var(--primary-color);
+        }
+
+        .btn-download {
+            background: var(--accent-color);
+            color: var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-download:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-download i {
+            font-size: 1.2rem;
         }
 
         .social-links {
@@ -302,9 +326,21 @@
             border-radius: 2px;
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: var(--delay, 0s);
+        }
+
         /* About Section */
         #about {
-            background: var(--bg-secondary);
+            background: var(--bg-dark);
         }
 
         .about-content {
@@ -319,7 +355,7 @@
 
         .about-text p {
             margin-bottom: 1rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 1.1rem;
             text-align: justify;
         }
@@ -338,6 +374,16 @@
             gap: 0.5rem;
             word-break: break-word;
             flex-wrap: wrap;
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-elevated);
         }
 
         .info-item i {
@@ -355,6 +401,7 @@
             flex: 1;
             min-width: 0;
             word-wrap: break-word;
+            color: var(--text-muted);
         }
 
         /* Skills Section */
@@ -370,12 +417,12 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.15);
         }
 
         .skill-category:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-colored);
             border-color: var(--primary-color);
         }
 
@@ -395,24 +442,25 @@
         }
 
         .skill-tag {
-            background: var(--bg-dark);
+            background: rgba(139, 92, 246, 0.1);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: var(--text-dark);
-            border: 2px solid rgba(59, 130, 246, 0.2);
+            color: var(--text-light);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             transition: all 0.3s ease;
         }
 
         .skill-tag:hover {
             border-color: var(--primary-color);
-            background: rgba(59, 130, 246, 0.1);
+            background: rgba(139, 92, 246, 0.25);
             transform: scale(1.05);
+            color: var(--white);
         }
 
         /* Experience Section */
         #experience {
-            background: var(--bg-secondary);
+            background: var(--bg-dark);
         }
 
         .timeline {
@@ -428,7 +476,7 @@
             top: 0;
             height: 100%;
             width: 2px;
-            background: var(--primary-color);
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--accent-color) 100%);
         }
 
         .timeline-item {
@@ -439,15 +487,12 @@
             gap: 2rem;
         }
 
-        .timeline-item:nth-child(even) .timeline-content {
+        .timeline-item:nth-child(odd) .timeline-content {
             grid-column: 1;
-            text-align: right;
         }
 
-        .timeline-item:nth-child(even)::after {
-            left: auto;
-            right: 50%;
-            transform: translateX(50%);
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 2;
         }
 
         .timeline-content {
@@ -456,12 +501,12 @@
             border-radius: 10px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.15);
         }
 
         .timeline-content:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-colored);
             border-color: var(--primary-color);
         }
 
@@ -476,7 +521,8 @@
             background: var(--primary-color);
             border: 3px solid var(--bg-dark);
             border-radius: 50%;
-            box-shadow: 0 0 0 4px var(--bg-secondary);
+            box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+            z-index: 1;
         }
 
         .timeline-date {
@@ -501,14 +547,14 @@
         }
 
         .timeline-content p {
-            color: var(--text-light);
+            color: var(--text-muted);
             line-height: 1.8;
         }
 
         .timeline-content ul {
             margin-top: 1rem;
             padding-left: 1.5rem;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         .timeline-content li {
@@ -529,18 +575,18 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
             cursor: pointer;
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.15);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-colored);
             border-color: var(--primary-color);
         }
 
         .project-image {
             height: 200px;
-            background: var(--gradient);
+            background: var(--gradient-hero);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -559,7 +605,7 @@
         }
 
         .project-content p {
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-bottom: 1rem;
         }
 
@@ -571,12 +617,12 @@
         }
 
         .tech-tag {
-            background: var(--bg-dark);
+            background: rgba(139, 92, 246, 0.1);
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.85rem;
-            color: var(--primary-color);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: var(--accent-color);
+            border: 1px solid rgba(139, 92, 246, 0.2);
         }
 
         .project-links {
@@ -601,7 +647,7 @@
 
         /* Education Section */
         #education {
-            background: var(--bg-secondary);
+            background: var(--bg-dark);
         }
 
         .education-grid {
@@ -616,14 +662,13 @@
             border-radius: 15px;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            border-left: 5px solid var(--primary-color);
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.15);
             border-left: 5px solid var(--primary-color);
         }
 
         .education-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+            box-shadow: var(--shadow-colored);
         }
 
         .education-card h3 {
@@ -640,6 +685,10 @@
         .education-card .year {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        .education-card p {
+            color: var(--text-muted);
         }
 
         /* Contact Section */
@@ -663,13 +712,14 @@
             background: var(--bg-card);
             padding: 1.5rem;
             border-radius: 10px;
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.15);
             transition: all 0.3s ease;
         }
 
         .contact-item:hover {
             border-color: var(--primary-color);
             transform: translateY(-3px);
+            box-shadow: var(--shadow-colored);
         }
 
         .contact-item i {
@@ -684,7 +734,7 @@
         }
 
         .contact-item p {
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         .contact-item a {
@@ -718,7 +768,7 @@
         .form-group input,
         .form-group textarea {
             padding: 0.8rem;
-            border: 2px solid rgba(59, 130, 246, 0.2);
+            border: 2px solid rgba(139, 92, 246, 0.2);
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
@@ -731,7 +781,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            background: var(--bg-secondary);
+            background: var(--bg-elevated);
         }
 
         .form-group textarea {
@@ -758,11 +808,11 @@
 
         /* Footer */
         footer {
-            background: var(--bg-secondary);
+            background: var(--bg-card);
             color: var(--white);
             text-align: center;
             padding: 2rem;
-            border-top: 1px solid rgba(59, 130, 246, 0.1);
+            border-top: 1px solid rgba(139, 92, 246, 0.15);
         }
 
         footer p {
@@ -852,9 +902,12 @@
                 transform: translateX(-50%);
             }
 
+            .timeline-item:nth-child(odd) .timeline-content {
+                grid-column: 1;
+            }
+
             .timeline-item:nth-child(even) .timeline-content {
                 grid-column: 1;
-                text-align: left;
             }
 
             .section-title {
@@ -959,6 +1012,9 @@
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get In Touch</a>
                 <a href="#projects" class="btn btn-secondary">View My Work</a>
+                <a href="YOUR_GDRIVE_LINK_HERE" target="_blank" class="btn btn-download" download>
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
             </div>
             <div class="social-links">
                 <a href="https://github.com/T-pritam" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -972,7 +1028,7 @@
     <section id="about">
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
-            <div class="about-text">
+            <div class="about-text reveal">
                 <p>
                     Hello! I'm T Pritam, a Full Stack Developer with 1.5 years of professional experience in building modern web and mobile applications. I specialize in React.js, React Native, Next.js, Node.js, and the complete MERN stack ecosystem.
                 </p>
@@ -984,32 +1040,32 @@
                 </p>
             </div>
             <div class="about-info">
-                <div class="info-item">
+                <div class="info-item reveal" style="--delay: 0.05s;">
                     <i class="fas fa-user"></i>
                     <strong>Name:</strong>
                     <span>T Pritam</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item reveal" style="--delay: 0.1s;">
                     <i class="fas fa-envelope"></i>
                     <strong>Email:</strong>
                     <span>pritamrao38@gmail.com</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item reveal" style="--delay: 0.15s;">
                     <i class="fas fa-phone"></i>
                     <strong>Phone:</strong>
                     <span>+91 9861006347</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item reveal" style="--delay: 0.2s;">
                     <i class="fas fa-map-marker-alt"></i>
                     <strong>Location:</strong>
                     <span>Hyderabad, India</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item reveal" style="--delay: 0.25s;">
                     <i class="fas fa-graduation-cap"></i>
                     <strong>Education:</strong>
                     <span>BTech - NIST University</span>
                 </div>
-                <div class="info-item">
+                <div class="info-item reveal" style="--delay: 0.3s;">
                     <i class="fas fa-briefcase"></i>
                     <strong>Experience:</strong>
                     <span>1.5 Years</span>
@@ -1022,7 +1078,7 @@
     <section id="skills">
         <h2 class="section-title">Skills & Technologies</h2>
         <div class="skills-grid">
-            <div class="skill-category">
+            <div class="skill-category reveal" style="--delay: 0.05s;">
                 <h3><i class="fas fa-code"></i> Frontend Development</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">React.js</span>
@@ -1035,7 +1091,7 @@
                     <span class="skill-tag">Tailwind CSS</span>
                 </div>
             </div>
-            <div class="skill-category">
+            <div class="skill-category reveal" style="--delay: 0.1s;">
                 <h3><i class="fas fa-server"></i> Backend Development</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">Node.js</span>
@@ -1046,7 +1102,7 @@
                     <span class="skill-tag">Pusher</span>
                 </div>
             </div>
-            <div class="skill-category">
+            <div class="skill-category reveal" style="--delay: 0.15s;">
                 <h3><i class="fas fa-database"></i> Database & Storage</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">MongoDB</span>
@@ -1055,7 +1111,7 @@
                     <span class="skill-tag">Cloudinary</span>
                 </div>
             </div>
-            <div class="skill-category">
+            <div class="skill-category reveal" style="--delay: 0.2s;">
                 <h3><i class="fas fa-shield-alt"></i> Authentication & Tools</h3>
                 <div class="skill-tags">
                     <span class="skill-tag">JWT</span>
@@ -1074,7 +1130,7 @@
         <h2 class="section-title">Work Experience</h2>
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-content">
+                <div class="timeline-content reveal" style="--delay: 0.05s;">
                     <span class="timeline-date">Dec 2024 - Present</span>
                     <h3>Full Stack Developer</h3>
                     <h4><a href="https://play.google.com/store/apps/details?id=com.tach.com" target="_blank" style="color: var(--primary-color);">Tach21</a> - 10-minute grocery delivery startup</h4>
@@ -1088,7 +1144,7 @@
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-content">
+                <div class="timeline-content reveal" style="--delay: 0.1s;">
                     <span class="timeline-date">Oct 2024 - Dec 2024</span>
                     <h3>Software Engineer Trainee</h3>
                     <h4><a href="https://neyaatek.com/" target="_blank" style="color: var(--primary-color);">NeyaaTek</a></h4>
@@ -1101,7 +1157,7 @@
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-content">
+                <div class="timeline-content reveal" style="--delay: 0.15s;">
                     <span class="timeline-date">Oct 2023 - May 2024</span>
                     <h3>SDE Intern</h3>
                     <h4>Caravel.Tech</h4>
@@ -1120,7 +1176,7 @@
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid">
-            <div class="project-card">
+            <div class="project-card reveal" style="--delay: 0.05s;">
                 <div class="project-image">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
@@ -1142,7 +1198,7 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card reveal" style="--delay: 0.1s;">
                 <div class="project-image">
                     <i class="fas fa-comments"></i>
                 </div>
@@ -1173,19 +1229,19 @@
     <section id="education">
         <h2 class="section-title">Education</h2>
         <div class="education-grid">
-            <div class="education-card">
+            <div class="education-card reveal" style="--delay: 0.05s;">
                 <h3>NIST University</h3>
                 <p class="degree">Bachelor of Technology (BTech)</p>
                 <p class="year">2019 - 2023</p>
                 <p>CGPA: 8.2/10 | Comprehensive study in Computer Science fundamentals including Data Structures, Algorithms, Database Management, Web Technologies, and Software Engineering</p>
             </div>
-            <div class="education-card">
+            <div class="education-card reveal" style="--delay: 0.1s;">
                 <h3>Saraswati Vidya Mandir</h3>
                 <p class="degree">Higher Secondary Education</p>
                 <p class="year">2018 - 2019</p>
                 <p>Percentage: 63% | Focused on Science stream with Mathematics, Physics, Chemistry, and Computer Science</p>
             </div>
-            <div class="education-card">
+            <div class="education-card reveal" style="--delay: 0.15s;">
                 <h3>Saraswati Vidya Mandir</h3>
                 <p class="degree">Secondary Education</p>
                 <p class="year">2016 - 2017</p>
@@ -1199,35 +1255,35 @@
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-content">
             <div class="contact-info">
-                <div class="contact-item">
+                <div class="contact-item reveal" style="--delay: 0.05s;">
                     <i class="fas fa-envelope"></i>
                     <div>
                         <h3>Email</h3>
                         <p><a href="mailto:pritamrao38@gmail.com">pritamrao38@gmail.com</a></p>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal" style="--delay: 0.1s;">
                     <i class="fas fa-phone"></i>
                     <div>
                         <h3>Phone</h3>
                         <p><a href="tel:+919861006347">+91 9861006347</a></p>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal" style="--delay: 0.15s;">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
                         <h3>Location</h3>
                         <p>Hyderabad, India</p>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal" style="--delay: 0.2s;">
                     <i class="fab fa-linkedin"></i>
                     <div>
                         <h3>LinkedIn</h3>
                         <p><a href="https://www.linkedin.com/in/t-pritam" target="_blank">linkedin.com/in/t-pritam</a></p>
                     </div>
                 </div>
-                <div class="contact-item">
+                <div class="contact-item reveal" style="--delay: 0.25s;">
                     <i class="fab fa-github"></i>
                     <div>
                         <h3>GitHub</h3>
@@ -1235,7 +1291,7 @@
                     </div>
                 </div>
             </div>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form reveal" id="contactForm" style="--delay: 0.3s;">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -1342,18 +1398,24 @@
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    if (entry.target.classList.contains('reveal')) {
+                        entry.target.classList.add('reveal-visible');
+                    } else {
+                        entry.target.classList.add('fade-in');
+                    }
+                    obs.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        // Observe sections for global fade-in
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Observe elements with reveal animation
+        document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
     </script>
 </body>
 </html>
