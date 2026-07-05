@@ -1,150 +1,76 @@
-# T Pritam - Full Stack Developer Portfolio
+# T Pritam — Full Stack Developer Portfolio
 
-Welcome to my personal portfolio website! This is a modern, responsive portfolio showcasing my skills, projects, and experience as a Full Stack Developer.
+A dark, highly animated single-page portfolio built with Vite, Three.js and GSAP.
 
-## 🌐 Live Demo
+## 🌐 Live
 
-Visit my portfolio: [https://t-pritam.github.io/portfolio](https://t-pritam.github.io/portfolio)
+[https://portfolio.pritamrao.tech](https://portfolio.pritamrao.tech)
 
 ## 🛠 Tech Stack
 
-### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS variables and animations
-- **JavaScript** - Interactive features and smooth scrolling
-- **Font Awesome 6.4.0** - Icon library
-
-### Technologies Featured
-- **Frontend**: React.js, React Native, Next.js, TypeScript, Redux
-- **Backend**: Node.js, Express.js, Fastify
-- **Database**: MongoDB, MySQL
-- **Cloud**: AWS (EC2, S3, RDS)
-- **Authentication**: JWT, OAuth
-- **Tools**: Git, GitHub, Vercel, Agile
+- **Vite** — build tooling (vanilla JS, no framework)
+- **Three.js** — interactive WebGL particle field in the hero (mouse + scroll reactive)
+- **GSAP** (ScrollTrigger, SplitText) — preloader, text reveals, scroll animations, magnetic buttons
+- **Lenis** — smooth scrolling
+- **Space Grotesk + Inter** — self-hosted variable fonts via Fontsource
+- **Brevo** — contact form email delivery
 
 ## ✨ Features
 
-- ✅ **Responsive Design** - Mobile-friendly layout for all devices
-- ✅ **Dark Theme** - Modern dark color palette with purple accents
-- ✅ **Smooth Animations** - Scroll-triggered reveal animations
-- ✅ **Profile Image** - Centered circular profile photo
-- ✅ **Skills Showcase** - Organized skill categories with tags
-- ✅ **Work Experience** - Timeline of professional experience
-- ✅ **Project Portfolio** - Featured projects with live demos
-- ✅ **Education Section** - Academic background
-- ✅ **Contact Form** - Get in touch section with contact information
-- ✅ **Social Links** - Quick access to GitHub, LinkedIn, Email
+- Noir dark theme with an electric-lime accent
+- Preloader with counter and slide-away reveal
+- Three.js particle starfield hero, reduced on touch devices
+- SplitText character reveal on the hero title, line-mask reveals on section titles
+- Scroll-driven reveals, stat counters, and a drawn experience timeline
+- Custom cursor + magnetic hover (fine-pointer devices only)
+- Fullscreen animated mobile menu
+- `prefers-reduced-motion` respected throughout
+- Working contact form (Brevo) with confetti on success
 
-## 📁 Project Structure
+## 📁 Structure
 
 ```
 portfolio/
-├── index.html          # Main portfolio page
-├── image.jpg          # Profile image
-├── CNAME              # GitHub Pages custom domain
-└── README.md          # This file
+├── index.html            # Page markup
+├── src/
+│   ├── main.js           # Entry point + Brevo contact form
+│   ├── style.css         # Design system + all styles
+│   ├── three-scene.js    # WebGL particle field
+│   ├── animations.js     # GSAP / Lenis / nav / menu
+│   └── cursor.js         # Custom cursor
+├── public/
+│   ├── image.jpg         # Profile photo
+│   └── CNAME             # Custom domain
+└── .github/workflows/deploy.yml  # GitHub Pages deploy (master)
 ```
 
-## 🚀 Deployment
+## 🚀 Development
 
-This portfolio is deployed on **GitHub Pages**:
-1. Repository: `https://github.com/T-pritam/portfolio`
-2. Branch: `master`
-3. Custom domain: Configured via CNAME file
+```bash
+npm install
+npm run dev       # local dev server
+npm run build     # production build to dist/
+npm run preview   # preview the production build
+```
 
-### To Deploy Your Own
-1. Clone this repository
-2. Customize the content in `index.html`
-3. Add your profile image as `image.jpg`
-4. Push to GitHub
-5. Enable GitHub Pages in repository settings
-
-## 📝 Sections
-
-### Hero
-- Profile image and introduction
-- Call-to-action buttons
-- Social media links
-
-### About
-- Personal introduction
-- Key information (Name, Email, Phone, Location, Education, Experience)
-- Personal summary
-
-### Skills & Technologies
-- Frontend Development
-- Backend Development
-- Database & Storage
-- Authentication & Tools
-- Cloud Services
-
-### Experience
-- Work timeline with companies and responsibilities
-- Achievements and impact metrics
-- Current and past roles
-
-### Projects
-- Featured projects with descriptions
-- Technology stack for each project
-- Links to GitHub repositories and live demos
-
-### Education
-- Academic qualifications
-- Educational institutions
-- CGPA/Percentage
-
-### Contact
-- Contact information cards
-- Contact form for direct messages
-- Social media links
+The contact form needs `VITE_BREVO_API_KEY` (see `.env.example`); in CI it is
+injected from the `VITE_BREVO_API_KEY` repository secret.
 
 ## 🎨 Customization
 
-### Change Colors
-Edit CSS variables in the `<style>` section:
+Design tokens live at the top of `src/style.css`:
+
 ```css
 :root {
-    --primary-color: #8b5cf6;      /* Purple */
-    --secondary-color: #7c3aed;    /* Darker purple */
-    --accent-color: #a78bfa;       /* Light purple */
-    --bg-dark: #0f172a;            /* Dark background */
-    /* ... more variables */
+    --bg: #070707;        /* page background */
+    --accent: #c8f651;    /* electric lime accent */
+    --text: #f4f4f1;
+    --muted: #8f8f89;
 }
 ```
-
-### Update Content
-Simply edit the HTML sections with your own:
-- Replace profile image
-- Update experience timeline
-- Add/remove projects
-- Modify skills
-- Update contact information
-
-## 🔧 Resume Download
-
-Replace `YOUR_GDRIVE_LINK_HERE` in the hero section with your actual Google Drive resume link for the download button to work.
-
-## 📱 Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
 
 ## 🤝 Contact
 
 - **Email**: [pritamrao38@gmail.com](mailto:pritamrao38@gmail.com)
 - **LinkedIn**: [linkedin.com/in/t-pritam](https://www.linkedin.com/in/t-pritam)
 - **GitHub**: [github.com/T-pritam](https://github.com/T-pritam)
-- **Phone**: +91 9861006347
-
-## 📄 License
-
-This portfolio is open source and available for personal use. Feel free to fork and customize it for your own portfolio!
-
----
-
-**Built with ❤️ and passion for web development**
-
-Last Updated: November 2025
