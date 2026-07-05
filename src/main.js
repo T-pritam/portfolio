@@ -1,89 +1,12 @@
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import './style.css';
 import confetti from 'canvas-confetti';
+import { initHeroScene } from './three-scene.js';
+import { initAnimations } from './animations.js';
+import { initCursor } from './cursor.js';
 
-// Initialize AOS
-AOS.init({
-    duration: 1000,
-    easing: 'ease-out-cubic',
-    once: true,
-    offset: 50,
-});
-
-// Particle Effect (Simple Canvas background)
-const initParticles = () => {
-    // This is a placeholder for a more complex particle system if desired.
-    // For now, we rely on the CSS gradient animation.
-    // If you want actual canvas particles, we can add them here.
-};
-
-// Mobile Menu Toggle
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
-menuToggle?.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle?.classList.remove('active');
-    });
-});
-
-// Scroll to Top Button
-const scrollTop = document.getElementById('scrollTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTop?.classList.add('show');
-    } else {
-        scrollTop?.classList.remove('show');
-    }
-});
-
-scrollTop?.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-// Hero Image Hover Effect (Tilt)
-const heroImage = document.querySelector('.hero-image');
-heroImage?.addEventListener('mousemove', (e) => {
-    const { offsetWidth: w, offsetHeight: h } = heroImage;
-    const { offsetX: x, offsetY: y } = e;
-    const move = 20;
-    const xMove = (x / w * move * 2) - move;
-    const yMove = (y / h * move * 2) - move;
-
-    heroImage.style.transform = `translate(${xMove}px, ${yMove}px) scale(1.05)`;
-});
-
-heroImage?.addEventListener('mouseleave', () => {
-    heroImage.style.transform = '';
-});
-
-
-// Confetti on "Get In Touch" or specific actions
-document.querySelectorAll('.btn-primary').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-        const rect = btn.getBoundingClientRect();
-        // confetti({
-        //     particleCount: 30,
-        //     spread: 50,
-        //     origin: { 
-        //         x: (rect.left + rect.width / 2) / window.innerWidth, 
-        //         y: (rect.top + rect.height / 2) / window.innerHeight 
-        //     },
-        //     disableForReducedMotion: true
-        // });
-    });
-});
+initHeroScene();
+initAnimations();
+initCursor();
 
 // Form Submission with Brevo
 const contactForm = document.getElementById('contactForm');
